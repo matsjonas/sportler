@@ -44,6 +44,46 @@ public class Team extends Model {
     public List<Player> members;
 
     /*
+        Custom access methods
+     */
+
+    public boolean addAdmin(Player player) {
+        if (admins.contains(player)) {
+            LOGGER.info(String.format("Not adding player %d to team %d admins. Already present.", player.id, this.id));
+            return false;
+        } else {
+            return admins.add(player);
+        }
+    }
+
+    public boolean removeAdmin(Player player) {
+        if (admins.contains(player)) {
+            return admins.remove(player);
+        } else {
+            LOGGER.info(String.format("Not removing player %d from team %d admins. Already absent.", player.id, this.id));
+            return false;
+        }
+    }
+
+    public boolean addMember(Player player) {
+        if (members.contains(player)) {
+            LOGGER.info(String.format("Not adding player %d to team %d members. Already present.", player.id, this.id));
+            return false;
+        } else {
+            return members.add(player);
+        }
+    }
+
+    public boolean removeMember(Player player) {
+        if (members.contains(player)) {
+            return members.remove(player);
+        } else {
+            LOGGER.info(String.format("Not removing player %d from team %d members. Already absent.", player.id, this.id));
+            return false;
+        }
+    }
+
+    /*
         Creation and retrieval
      */
 

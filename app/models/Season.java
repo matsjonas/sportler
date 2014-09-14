@@ -46,6 +46,28 @@ public class Season extends Model {
     @OneToMany(mappedBy = "season")
     public List<Game> games;
 
+    /*
+        Custom access methods
+     */
+
+    public boolean addAdmin(Player player) {
+        if (admins.contains(player)) {
+            LOGGER.info(String.format("Not adding player %d to team %d admins. Already present.", player.id, this.id));
+            return false;
+        } else {
+            return admins.add(player);
+        }
+    }
+
+    public boolean removeAdmin(Player player) {
+        if (admins.contains(player)) {
+            return admins.remove(player);
+        } else {
+            LOGGER.info(String.format("Not removing player %d from team %d admins. Already absent.", player.id, this.id));
+            return false;
+        }
+    }
+
      /*
         Creation and retrieval
      */
