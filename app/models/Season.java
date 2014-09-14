@@ -76,6 +76,7 @@ public class Season extends Model {
         this.name = name;
         this.admins = Arrays.asList(admin);
         this.open = true;
+        this.createdDate = new Date();
     }
 
     public static final Finder<Long, Season> FINDER = new Finder<Long, Season>(Long.class, Season.class);
