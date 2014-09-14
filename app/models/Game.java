@@ -82,8 +82,11 @@ public class Game extends Model {
         return FINDER.byId(id);
     }
 
-    public static List<Game> findAll() {
-        return FINDER.orderBy("id").findList();
+    public static List<Game> findAllBySeason(Long seasonId) {
+        return FINDER.where()
+                .eq("season.id", seasonId)
+                .orderBy("id")
+                .findList();
     }
 
 }

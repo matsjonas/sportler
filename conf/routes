@@ -3,7 +3,49 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET           /                             controllers.Application.index()
+
+# REST API Player
+GET           /api/player                   controllers.api.PlayerResource.players()
+GET           /api/player/:id               controllers.api.PlayerResource.player(id: Long)
+POST          /api/player                   controllers.api.PlayerResource.createPlayer
+PUT           /api/player/:id               controllers.api.PlayerResource.updatePlayer(id: Long)
+DELETE        /api/player/:id               controllers.api.PlayerResource.deletePlayer(id: Long)
+
+# REST API Team
+GET           /api/team                     controllers.api.TeamResource.teams()
+GET           /api/team/:id                 controllers.api.TeamResource.team(id: Long)
+POST          /api/team                     controllers.api.TeamResource.createTeam()
+PUT           /api/team/:id                 controllers.api.TeamResource.updateTeam(id: Long)
+DELETE        /api/team/:id                 controllers.api.TeamResource.deleteTeam(id: Long)
+
+GET           /api/team/:id/admins          controllers.api.TeamResource.teamAdmins(id: Long)
+POST          /api/team/:id/admins          controllers.api.TeamResource.addTeamAdmin(id: Long)
+DELETE        /api/team/:id/admins          controllers.api.TeamResource.deleteTeamAdmin(id: Long)
+
+GET           /api/team/:id/members         controllers.api.TeamResource.teamMembers(id: Long)
+POST          /api/team/:id/members         controllers.api.TeamResource.addTeamMember(id: Long)
+DELETE        /api/team/:id/members         controllers.api.TeamResource.deleteTeamMember(id: Long)
+
+# REST API Season
+
+GET           /api/season                   controllers.api.SeasonResource.seasons()
+GET           /api/season/:id               controllers.api.SeasonResource.season(id: Long)
+POST          /api/season                   controllers.api.SeasonResource.createSeason()
+PUT           /api/season/:id               controllers.api.SeasonResource.updateSeason(id: Long)
+DELETE        /api/season/:id               controllers.api.SeasonResource.deleteSeason(id: Long)
+
+GET           /api/season/:id/admins        controllers.api.SeasonResource.seasonAdmins(id: Long)
+POST          /api/season/:id/admins        controllers.api.SeasonResource.addSeasonAdmin(id: Long)
+DELETE        /api/season/:id/admins        controllers.api.SeasonResource.deleteSeasonAdmin(id: Long)
+
+# REST API Game
+
+GET           /api/season/:sid/game         controllers.api.GameResource.games(sid: Long)
+GET           /api/season/:sid/game/:id     controllers.api.GameResource.game(sid: Long, id: Long)
+POST          /api/season/:sid/game         controllers.api.GameResource.createGame(sid: Long)
+PUT           /api/season/:sid/game/:id     controllers.api.GameResource.updateGame(sid: Long, id: Long)
+DELETE        /api/season/:sid/game/:id     controllers.api.GameResource.deleteGame(sid: Long, id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET           /assets/*file                 controllers.Assets.at(path="/public", file)

@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import play.Logger;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -16,6 +18,8 @@ import java.util.List;
 
 @Entity
 public class Season extends Model {
+
+    private static final Logger.ALogger LOGGER = Logger.of(Season.class);
 
     @Id
     public long id;
@@ -36,14 +40,17 @@ public class Season extends Model {
 
     @Column(nullable = false)
     @Constraints.Required
+    @JsonIgnore
     public Date createdDate;
 
     @ManyToMany
     @JoinTable(name = "season_admins")
     @Constraints.Required
+    @JsonIgnore
     public List<Player> admins;
 
     @OneToMany(mappedBy = "season")
+    @JsonIgnore
     public List<Game> games;
 
     /*

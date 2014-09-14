@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -33,13 +34,16 @@ public class Player extends Model {
     public String name;
 
     @Column(length = 64, nullable = false)
+    @JsonIgnore
     private byte[] password;
 
     @Column(nullable = false)
     @Constraints.Required
+    @JsonIgnore
     public Date createdDate;
 
     @Column(length = 36)
+    @JsonIgnore
     private String authToken;
 
     /*
