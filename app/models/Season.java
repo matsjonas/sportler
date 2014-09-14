@@ -52,6 +52,7 @@ public class Season extends Model {
     public Season(String name, Player admin) {
         this.name = name;
         this.admins = Arrays.asList(admin);
+        this.open = true;
     }
 
     public static final Finder<Long, Season> FINDER = new Finder<Long, Season>(Long.class, Season.class);
