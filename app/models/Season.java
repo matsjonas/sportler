@@ -26,6 +26,7 @@ public class Season extends Model {
     @Constraints.MinLength(2)
     public String name;
 
+    @Column(nullable = false)
     @Constraints.Required
     @ManyToOne
     public Player owner;

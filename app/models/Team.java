@@ -25,6 +25,7 @@ public class Team extends Model {
     @Constraints.Required
     public String name;
 
+    @Column(nullable = false)
     @Constraints.Required
     @ManyToOne
     public Player owner;
