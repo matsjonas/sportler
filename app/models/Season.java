@@ -57,7 +57,7 @@ public class Season extends Model {
 
     public static final Finder<Long, Season> FINDER = new Finder<Long, Season>(Long.class, Season.class);
 
-    public static Season byId(long id) {
+    public static Season findById(long id) {
         return FINDER.byId(id);
     }
 
