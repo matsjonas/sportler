@@ -79,9 +79,10 @@ public class Season extends Model {
         Creation and retrieval
      */
 
-    public Season(String name, Player admin) {
+    public Season(String name, Player owner) {
         this.name = name;
-        this.admins = Arrays.asList(admin);
+        this.owner = owner;
+        this.admins = Arrays.asList(owner);
         this.open = true;
         this.createdDate = new Date();
     }
