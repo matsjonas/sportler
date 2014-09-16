@@ -4,10 +4,28 @@
 
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>@title</title>
+
+        @if(play.Play.isDev) {
+            <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.css")">
+        } else {
+            <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.min.css")">
+        }
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
+
+        @if(play.Play.isDev) {
+            <script src="@routes.Assets.at("jquery/jquery-2.1.1.js")" type="text/javascript"></script>
+            <script src="@routes.Assets.at("bootstrap/js/bootstrap.js")" type="text/javascript"></script>
+        } else {
+            <script src="@routes.Assets.at("jquery/jquery-2.1.1.min.js")" type="text/javascript"></script>
+            <script src="@routes.Assets.at("bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+        }
+        <script src="@routes.Assets.at("javascripts/main.js")" type="text/javascript"></script>
     </head>
     <body>
         @content

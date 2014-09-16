@@ -1,0 +1,37 @@
+body {
+    background-color: #e7e7e7;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2a2c36;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10;
+}
+
+.navbar {
+    z-index: 11;
+    background-color: #fff;
+    border-radius: 0;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.navbar .sidebar-header {
+    border-right: 1px solid #d1d1d1;
+    overflow: hidden;
+    float: left;
+    width: 250px;
+}
+
+.navbar .sidebar-header .navbar-brand {
+    color: #222;
+}
+
+.main-content {
+    background-color: #e7e7e7;
+    padding: 70px 30px 30px 280px;
+}
