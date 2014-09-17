@@ -1,9 +1,13 @@
 @(message: String)
 
+@import tags.gravatar
+
 @main("Sportler") {
 
     <nav class="sidebar" role="navigation">
-
+        <div class="user-info">
+            <img src="@gravatar("me@matsjonas.com")" alt="gravatar"/>
+        </div>
     </nav>
 
     <div class="navbar navbar-default navbar-fixed-top">
