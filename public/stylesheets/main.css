@@ -20,15 +20,41 @@ body {
     border-bottom: 1px solid #d1d1d1;
 }
 
-.navbar .sidebar-header {
+.navbar .navbar-header {
     border-right: 1px solid #d1d1d1;
     overflow: hidden;
     float: left;
     width: 250px;
 }
 
-.navbar .sidebar-header .navbar-brand {
+.navbar .navbar-header .navbar-brand {
     color: #222;
+}
+
+.navbar .navbar-header .navbar-brand .brand-title {
+    margin-left: 5px;
+}
+
+.navbar-header-toggle {
+    float: right;
+    cursor: pointer;
+    padding: 18px 17px 17px 17px;
+}
+
+.navbar-header-toggle:hover {
+    background-color: #eaeaea;
+}
+
+.navbar-header-toggle .icon-bar {
+    background-color: #222;
+    display: block;
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.navbar-header-toggle .icon-bar + .icon-bar {
+    margin-top: 3px;
 }
 
 .main-content {
