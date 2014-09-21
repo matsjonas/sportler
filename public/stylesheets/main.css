@@ -11,7 +11,32 @@ body {
     left: 0;
     height: 100%;
     z-index: 10;
-    padding-top: 70px;
+    padding-top: 51px;
+}
+
+.sidebar .player-info {
+    padding: 15px;
+    background-color: #1c1e27;
+    height: 80px;
+}
+
+.sidebar .player-info .player-avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    float: left;
+}
+
+.sidebar .player-info .player-name {
+    margin-left: 65px;
+    font-weight: bold;
+}
+
+.sidebar .player-info .player-email {
+    margin-left: 65px;
+    font-size: 12px;
 }
 
 .navbar {
@@ -60,5 +85,5 @@ body {
 
 .main-content {
     background-color: #e7e7e7;
-    padding: 70px 30px 30px 280px;
+    padding: 51px 30px 30px 280px;
 }
