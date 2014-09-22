@@ -75,8 +75,6 @@ body {
 
 .navbar .navbar-header {
     border-right: 1px solid #d1d1d1;
-    overflow: hidden;
-    float: left;
     width: 235px;
 }
 
@@ -84,8 +82,9 @@ body {
     color: #222;
 }
 
-.navbar .navbar-header .navbar-brand .brand-title {
-    margin-left: 5px;
+.navbar .navbar-header .navbar-brand i {
+    font-size: 16px;
+    margin-right: 5px;
 }
 
 .navbar-header-toggle {
@@ -112,9 +111,7 @@ body {
 
 .navbar-nav > li > .info-box {
     line-height: 20px;
-    margin: 12px;
-    padding: 3px 8px;
-    border: 1px solid #aaa;
+    margin: 15px;
     color: #aaa;
 }
 
