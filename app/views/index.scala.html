@@ -4,19 +4,31 @@
 
 @main("Sportler") {
 
-    <nav class="sidebar" role="navigation">
+    <nav class="sidebar" role="navigation" data-ng-controller="SidebarController">
         <div class="player-info">
             <img class="player-avatar" src="@gravatar("me@matsjonas.com")" alt="gravatar"/>
             <div class="player-name">matsjonas</div>
             <div class="player-email">me@@matsjonas.com</div>
         </div>
         <ul class="sidebar-menu">
-            <li><i class="icon-badge"></i>Dashboard</li>
-            <li class="active"><i class="icon-user"></i>Profile</li>
-            <li><i class="icon-users"></i>Users</li>
-            <li><i class="icon-umbrella"></i>Teams</li>
-            <li><i class="icon-layers"></i>Seasons</li>
-            <li><i class="icon-flag"></i>Games</li>
+            <li data-ng-class="activeIf('/dashboard')">
+                <a href="/#/dashboard"><i class="icon-badge"></i>Dashboard</a>
+            </li>
+            <li data-ng-class="activeIf('/profile')">
+                <a href="/#/profile"><i class="icon-user"></i>Profile</a>
+            </li>
+            <li data-ng-class="activeIf('/users')">
+                <a href="/#users"><i class="icon-users"></i>Users</a>
+            </li>
+            <li data-ng-class="activeIf('/teams')">
+                <a href="/#/teams"><i class="icon-umbrella"></i>Teams</a>
+            </li>
+            <li data-ng-class="activeIf('/seasons')">
+                <a href="/#/seasons"><i class="icon-layers"></i>Seasons</a>
+            </li>
+            <li data-ng-class="activeIf('/games')">
+                <a href="/#/games"><i class="icon-flag"></i>Games</a>
+            </li>
         </ul>
     </nav>
 
@@ -45,7 +57,7 @@
     </div>
 
     <div class="main-content">
-
+        <div data-ng-view></div>
     </div>
 
 }

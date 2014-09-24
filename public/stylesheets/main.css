@@ -45,23 +45,25 @@ body {
     list-style: none;
 }
 
-.sidebar ul.sidebar-menu li {
+.sidebar ul.sidebar-menu li a {
+    display: block;
     padding: 10px;
-    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
     border-left: 3px solid #2a2c36;
 }
 
-.sidebar ul.sidebar-menu li.active {
+.sidebar ul.sidebar-menu li.active a {
     background-color: #393b49;
     border-left: 3px solid #fff;
 }
 
-.sidebar ul.sidebar-menu li:hover {
+.sidebar ul.sidebar-menu li:hover a {
     background-color: #393b49;
     border-left: 3px solid #fff;
 }
 
-.sidebar ul.sidebar-menu li i {
+.sidebar ul.sidebar-menu li a i {
     margin-left: 10px;
     margin-right: 20px;
 }
@@ -122,5 +124,6 @@ body {
 
 .main-content {
     background-color: #e7e7e7;
-    padding: 51px 30px 30px 280px;
+    margin: 51px 30px 30px 250px;
+    padding: 20px;
 }
