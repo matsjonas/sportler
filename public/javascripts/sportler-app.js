@@ -31,11 +31,47 @@ angular.module('sportlerApp', ['ngRoute'])
             });
     })
 
-    .controller('SidebarController', function($scope, $location) {
+    .service('EventService', function () {
+
+        this.TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+
+        var _registeredCallbacks = {};
+
+        this.on = function (event, callback) {
+            if (!_registeredCallbacks[event]) {
+                _registeredCallbacks[event] = [];
+            }
+            if (typeof callback == "function") {
+                _registeredCallbacks[event].push(callback);
+            }
+        };
+
+        this.emit = function (event, eventArgs) {
+            var callbacks = _registeredCallbacks[event];
+            if ($.isArray(callbacks)) {
+                for (var i = 0; i < callbacks.length; i++) {
+                    callbacks[i](eventArgs);
+                }
+            }
+        };
+
+    })
+
+    .controller('SidebarController', function($scope, $location, EventService) {
         $scope.current = $location.path();
 
         $scope.activeIf = function(path) {
             return $location.path() == path ? "active" : false;
+        };
+
+        EventService.on(EventService.TOGGLE_SIDEBAR, function() {
+            console.log('SidebarController on it!');
+        });
+    })
+
+    .controller('NavbarController', function($scope, EventService) {
+        $scope.toggleSidebar = function() {
+            EventService.emit(EventService.TOGGLE_SIDEBAR);
         };
     })
 
