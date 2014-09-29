@@ -2,6 +2,14 @@ body {
     background-color: #e7e7e7;
 }
 
+.transition-all-03 {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
 .sidebar {
     width: 250px;
     background-color: #2a2c36;
@@ -12,6 +20,10 @@ body {
     height: 100%;
     z-index: 10;
     padding-top: 51px;
+}
+
+.sidebar.sidebar-hidden {
+    left: -250px;
 }
 
 .sidebar .player-info {
@@ -76,8 +88,14 @@ body {
 }
 
 .navbar .navbar-header {
+    position: absolute;
+    left: 15px;
     border-right: 1px solid #d1d1d1;
     width: 235px;
+}
+
+.navbar .navbar-header.header-hidden {
+    left: -185px;
 }
 
 .navbar .navbar-header .navbar-brand {
@@ -124,6 +142,10 @@ body {
 
 .main-content {
     background-color: #e7e7e7;
-    margin: 51px 30px 30px 250px;
+    margin: 51px 0 30px 250px;
     padding: 20px;
+}
+
+.main-content.full-size {
+    margin-left: 0;
 }

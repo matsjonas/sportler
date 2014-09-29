@@ -1,3 +1,7 @@
+var EVENTS = {
+    TOGGLE_SIDEBAR : 'TOGGLE_SIDEBAR'
+};
+
 angular.module('sportlerApp', ['ngRoute'])
 
     .config(function ($routeProvider) {
@@ -33,8 +37,6 @@ angular.module('sportlerApp', ['ngRoute'])
 
     .service('EventService', function () {
 
-        this.TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
-
         var _registeredCallbacks = {};
 
         this.on = function (event, callback) {
@@ -58,21 +60,41 @@ angular.module('sportlerApp', ['ngRoute'])
     })
 
     .controller('SidebarController', function($scope, $location, EventService) {
-        $scope.current = $location.path();
+
+        $scope.settings = {
+            hideSidebar : false
+        };
 
         $scope.activeIf = function(path) {
             return $location.path() == path ? "active" : false;
         };
 
-        EventService.on(EventService.TOGGLE_SIDEBAR, function() {
-            console.log('SidebarController on it!');
+        EventService.on(EVENTS.TOGGLE_SIDEBAR, function() {
+            $scope.settings.hideSidebar = !$scope.settings.hideSidebar;
         });
     })
 
     .controller('NavbarController', function($scope, EventService) {
-        $scope.toggleSidebar = function() {
-            EventService.emit(EventService.TOGGLE_SIDEBAR);
+
+        $scope.settings = {
+            shrinkHeader : false
         };
+
+        $scope.toggleSidebar = function() {
+            $scope.settings.shrinkHeader = !$scope.settings.shrinkHeader;
+            EventService.emit(EVENTS.TOGGLE_SIDEBAR);
+        };
+    })
+
+    .controller('MainContentController', function ($scope, EventService) {
+
+        $scope.settings = {
+            fullSize : false
+        };
+
+        EventService.on(EVENTS.TOGGLE_SIDEBAR, function() {
+            $scope.settings.fullSize = !$scope.settings.fullSize;
+        });
     })
 
     .controller('DashboardController', function ($scope, $location, $routeParams) {

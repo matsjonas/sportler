@@ -4,7 +4,7 @@
 
 @main("Sportler") {
 
-    <nav class="sidebar" role="navigation" data-ng-controller="SidebarController">
+    <nav class="sidebar transition-all-03" role="navigation" data-ng-class="{'sidebar-hidden' : settings.hideSidebar}" data-ng-controller="SidebarController">
         <div class="player-info">
             <img class="player-avatar" src="@gravatar("me@matsjonas.com")" alt="gravatar"/>
             <div class="player-name">matsjonas</div>
@@ -34,7 +34,7 @@
 
     <div class="navbar navbar-default navbar-fixed-top" data-ng-controller="NavbarController">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="navbar-header transition-all-03" data-ng-class="{'header-hidden' : settings.shrinkHeader}">
                 <span class="navbar-brand">
                     <i class="icon-trophy"></i>
                     <span class="brand-title">Sportler</span>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="main-content">
+    <div class="main-content transition-all-03" data-ng-class="{'full-size' : settings.fullSize}" data-ng-controller="MainContentController">
         <div data-ng-view></div>
     </div>
 
