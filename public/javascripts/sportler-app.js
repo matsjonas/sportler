@@ -61,7 +61,7 @@ angular.module('sportlerApp', ['ngRoute'])
 
     .controller('SidebarController', function($scope, $location, EventService) {
 
-        $scope.settings = {
+        $scope.state = {
             hideSidebar : false
         };
 
@@ -70,30 +70,30 @@ angular.module('sportlerApp', ['ngRoute'])
         };
 
         EventService.on(EVENTS.TOGGLE_SIDEBAR, function() {
-            $scope.settings.hideSidebar = !$scope.settings.hideSidebar;
+            $scope.state.hideSidebar = !$scope.state.hideSidebar;
         });
     })
 
     .controller('NavbarController', function($scope, EventService) {
 
-        $scope.settings = {
+        $scope.state = {
             shrinkHeader : false
         };
 
         $scope.toggleSidebar = function() {
-            $scope.settings.shrinkHeader = !$scope.settings.shrinkHeader;
+            $scope.state.shrinkHeader = !$scope.state.shrinkHeader;
             EventService.emit(EVENTS.TOGGLE_SIDEBAR);
         };
     })
 
     .controller('MainContentController', function ($scope, EventService) {
 
-        $scope.settings = {
+        $scope.state = {
             fullSize : false
         };
 
         EventService.on(EVENTS.TOGGLE_SIDEBAR, function() {
-            $scope.settings.fullSize = !$scope.settings.fullSize;
+            $scope.state.fullSize = !$scope.state.fullSize;
         });
     })
 
