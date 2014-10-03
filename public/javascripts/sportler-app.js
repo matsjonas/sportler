@@ -50,7 +50,7 @@ angular.module('sportlerApp', ['ngRoute'])
 
         this.emit = function (event, eventArgs) {
             var callbacks = _registeredCallbacks[event];
-            if ($.isArray(callbacks)) {
+            if (angular.isArray(callbacks)) {
                 for (var i = 0; i < callbacks.length; i++) {
                     callbacks[i](eventArgs);
                 }
