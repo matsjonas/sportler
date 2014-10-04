@@ -1,0 +1,5 @@
+superusers:
+
+  - email:      me@matsjonas.com
+    name:       Jonas Andersson
+    password:   secret
