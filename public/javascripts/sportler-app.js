@@ -120,11 +120,27 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     })
 
-    .controller('PlayerController', function ($scope, $location, $routeParams, $resource) {
+    .controller('PlayerController', function ($scope, $location, $routeParams, $resource, $window) {
 
         var Player = $resource("./api/player/:id", { id: '@id' });
 
         $scope.players = Player.query();
+
+        $scope.createNewPlayer = function() {
+            var player = new Player();
+            player.email = $scope.newPlayerEmail;
+            player.name = $scope.newPlayerName;
+            player.password = $scope.newPlayerPassword;
+            player.$save(function() {
+                $scope.newPlayerEmail = null;
+                $scope.newPlayerName = null;
+                $scope.newPlayerPassword = null;
+                $scope.players = Player.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
 
     })
 

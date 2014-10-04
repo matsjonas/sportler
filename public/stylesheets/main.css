@@ -2,6 +2,12 @@ body {
     background-color: #e7e7e7;
 }
 
+/* Reset bootstrap border radius */
+.navbar, .panel, .btn,
+.form-control, .input-group-addon {
+    border-radius: 0;
+}
+
 .transition-all-03 {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -83,7 +89,6 @@ body {
 .navbar {
     z-index: 11;
     background-color: #fff;
-    border-radius: 0;
     border-bottom: 1px solid #d1d1d1;
 }
 
@@ -150,20 +155,64 @@ body {
     margin-left: 0;
 }
 
-.panel {
-    border-radius: 0;
-}
-
 .panel .panel-heading h3 {
     font-size: 12px;
     text-transform: uppercase;
+    display: inline-block;
 }
 
 .panel .panel-heading h3 i {
     margin-right: 10px;
 }
 
+.panel-heading-right {
+    float: right;
+}
+
+.panel-heading-right:last-child {
+    margin-right: -15px;
+}
+
+.btn-panel {
+    border: none;
+    margin: -10px 0;
+    padding: 10px 10px;
+    background-color: inherit;
+    color: #999;
+    outline: none;
+}
+
+.btn-panel:hover {
+    color: #333;
+}
+
 .panel table {
-    margin: 20px 10px 10px 10px;
+    margin: 10px;
     font-size: 12px;
+}
+
+.panel-form-container {
+    margin: 10px 10px;
+    position: relative;
+}
+
+.input-group-addon label {
+     display: inherit;
+     max-width: inherit;
+     margin-bottom: inherit;
+     font-weight: inherit;
+}
+
+.slideup, .slidedown {
+    max-height: 0;
+    overflow-y: hidden;
+    -webkit-transition: max-height 0.5s;
+    -moz-transition: max-height 0.5s;
+    -ms-transition: max-height 0.5s;
+    -o-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+}
+
+.slidedown {
+    max-height: 60px ;
 }
