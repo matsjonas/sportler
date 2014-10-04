@@ -186,9 +186,13 @@ body {
     color: #333;
 }
 
-.panel table {
+.panel-table-wrapper {
     margin: 10px;
     font-size: 12px;
+}
+
+.panel-table-wrapper table {
+    margin: 0px;
 }
 
 .panel-form-container {
