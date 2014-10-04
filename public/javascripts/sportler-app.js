@@ -14,9 +14,9 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
                 controller: 'ProfileEditor',
                 templateUrl: 'assets/templates/profile.html'
             })
-            .when('/users', {
-                controller: 'UserController',
-                templateUrl: 'assets/templates/users.html'
+            .when('/players', {
+                controller: 'PlayerController',
+                templateUrl: 'assets/templates/players.html'
             })
             .when('/teams', {
                 controller: 'TeamController',
@@ -120,7 +120,7 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     })
 
-    .controller('UserController', function ($scope, $location, $routeParams, $resource) {
+    .controller('PlayerController', function ($scope, $location, $routeParams, $resource) {
 
         var Player = $resource("./api/player/:id", { id: '@id' });
 
