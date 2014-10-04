@@ -2,7 +2,7 @@ var EVENTS = {
     TOGGLE_SIDEBAR : 'TOGGLE_SIDEBAR'
 };
 
-angular.module('sportlerApp', ['ngRoute'])
+angular.module('sportlerApp', ['ngRoute', 'ngCookies'])
 
     .config(function ($routeProvider) {
         $routeProvider
@@ -59,42 +59,53 @@ angular.module('sportlerApp', ['ngRoute'])
 
     })
 
-    .controller('SidebarController', function($scope, $location, EventService) {
+    .service('SharedSettings', function($cookies) {
+
+        this.settings = {
+            sidebarVisible: !$cookies.sidebarVisible || $cookies.sidebarVisible == 'true'
+        };
+
+        this.toggleSidebarVisible = function() {
+            this.settings.sidebarVisible = !this.settings.sidebarVisible;
+            $cookies.sidebarVisible = this.settings.sidebarVisible;
+        };
+
+    })
+
+    .controller('SidebarController', function($scope, $location, SharedSettings) {
+
+        $scope.sharedSettings = SharedSettings.settings;
 
         $scope.state = {
-            hideSidebar : false
+
         };
 
         $scope.activeIf = function(path) {
             return $location.path() == path ? "active" : false;
         };
-
-        EventService.on(EVENTS.TOGGLE_SIDEBAR, function() {
-            $scope.state.hideSidebar = !$scope.state.hideSidebar;
-        });
     })
 
-    .controller('NavbarController', function($scope, EventService) {
+    .controller('NavbarController', function($scope, SharedSettings) {
+
+        $scope.sharedSettings = SharedSettings.settings;
 
         $scope.state = {
-            shrinkHeader : false
+
         };
 
         $scope.toggleSidebar = function() {
-            $scope.state.shrinkHeader = !$scope.state.shrinkHeader;
-            EventService.emit(EVENTS.TOGGLE_SIDEBAR);
+            SharedSettings.toggleSidebarVisible();
         };
     })
 
-    .controller('MainContentController', function ($scope, EventService) {
+    .controller('MainContentController', function ($scope, SharedSettings) {
+
+        $scope.sharedSettings = SharedSettings.settings;
 
         $scope.state = {
-            fullSize : false
+
         };
 
-        EventService.on(EVENTS.TOGGLE_SIDEBAR, function() {
-            $scope.state.fullSize = !$scope.state.fullSize;
-        });
     })
 
     .controller('DashboardController', function ($scope, $location, $routeParams) {
