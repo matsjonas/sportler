@@ -2,7 +2,7 @@ var EVENTS = {
     TOGGLE_SIDEBAR : 'TOGGLE_SIDEBAR'
 };
 
-angular.module('sportlerApp', ['ngRoute', 'ngCookies'])
+angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     .config(function ($routeProvider) {
         $routeProvider
@@ -112,23 +112,43 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies'])
 
     })
 
-    .controller('ProfileEditor', function ($scope, $location, $routeParams) {
+    .controller('ProfileEditor', function ($scope, $location, $routeParams, $resource) {
+
+        var Player = $resource("./api/player/:id", { id: '@id' });
+
+        $scope.player = Player.get({ id: 1 });
 
     })
 
-    .controller('UserController', function ($scope, $location, $routeParams) {
+    .controller('UserController', function ($scope, $location, $routeParams, $resource) {
+
+        var Player = $resource("./api/player/:id", { id: '@id' });
+
+        $scope.players = Player.query();
 
     })
 
-    .controller('TeamController', function ($scope, $location, $routeParams) {
+    .controller('TeamController', function ($scope, $location, $routeParams, $resource) {
+
+        var Team = $resource("./api/team/:id", { id: '@id' });
+
+        $scope.teams = Team.query();
 
     })
 
-    .controller('SeasonController', function ($scope, $location, $routeParams) {
+    .controller('SeasonController', function ($scope, $location, $routeParams, $resource) {
+
+        var Season = $resource("./api/season/:id", { id: '@id' });
+
+        $scope.seasons = Season.query();
 
     })
 
-    .controller('GameController', function ($scope, $location, $routeParams) {
+    .controller('GameController', function ($scope, $location, $routeParams, $resource) {
+
+        var Game = $resource("./api/season/:sid/game/:id", { sid: '@seasonId', id: '@id' });
+
+        $scope.games = Game.query({ sid: 0 });
 
     })
 
