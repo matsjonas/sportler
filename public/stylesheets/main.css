@@ -149,3 +149,21 @@ body {
 .main-content.full-size {
     margin-left: 0;
 }
+
+.panel {
+    border-radius: 0;
+}
+
+.panel .panel-heading h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.panel .panel-heading h3 i {
+    margin-right: 10px;
+}
+
+.panel table {
+    margin: 20px 10px 10px 10px;
+    font-size: 12px;
+}
