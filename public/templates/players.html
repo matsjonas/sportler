@@ -1,1 +1,18 @@
-Users: {{ players }}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Players</h3>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr data-ng-repeat="player in players">
+            <td>{{ player.id }}</td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.email }}</td>
+        </tr>
+    </table>
+</div>
