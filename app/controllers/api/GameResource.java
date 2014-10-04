@@ -14,7 +14,12 @@ import java.util.List;
 public class GameResource extends Controller {
 
     public static Result games(long seasonId) {
-        List<Game> games = Game.findAllBySeason(seasonId);
+        List<Game> games;
+        if (seasonId == 0) {
+            games = Game.findAll();
+        } else {
+            games = Game.findAllBySeason(seasonId);
+        }
         return ok(Json.toJson(games));
     }
 
