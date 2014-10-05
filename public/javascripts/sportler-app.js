@@ -223,11 +223,55 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     })
 
-    .controller('GameController', function ($scope, $location, $routeParams, $resource) {
+    .controller('GameController', function ($scope, $location, $routeParams, $resource, $window) {
 
         var Game = $resource("./api/season/:sid/game/:id", { sid: '@seasonId', id: '@id' });
+        var Player = $resource("./api/player/:id", { id: '@id' });
+        var Team = $resource("./api/team/:id", { id: '@id' });
+        var Season = $resource("./api/season/:id", { id: '@id' });
 
         $scope.games = Game.query({ sid: 0 });
+        $scope.players = Player.query();
+        $scope.teams = Team.query();
+        $scope.seasons = Season.query();
+
+        $scope.createNewGame = function() {
+            var game = new Game();
+            game.homePlayer = $scope.newGameHomePlayer;
+            game.awayPlayer = $scope.newGameAwayPlayer;
+            game.homeTeam = $scope.newGameHomeTeam;
+            game.awayTeam = $scope.newGameAwayTeam;
+            game.homePoints = parseInt($scope.newGameHomePoints);
+            game.awayPoints = parseInt($scope.newGameAwayPoints);
+            game.$save({ sid: $scope.newGameSeason.id }, function() {
+                $scope.newGameSeason = null;
+                $scope.newGameHomePlayer = null;
+                $scope.newGameAwayPlayer = null;
+                $scope.newGameHomeTeam = null;
+                $scope.newGameAwayTeam = null;
+                $scope.newGameHomePoints = null;
+                $scope.newGameAwayPoints = null;
+                $scope.games = Game.query({ sid: 0 });
+                $scope.players = Player.query();
+                $scope.team = Team.query();
+                $scope.seasons = Season.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
+
+        $scope.deleteGame = function(game) {
+            game.$remove({ sid: game.season.id }, function() {
+                $scope.games = Game.query({ sid: 0 });
+                $scope.players = Player.query();
+                $scope.team = Team.query();
+                $scope.seasons = Season.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
 
     })
 

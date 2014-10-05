@@ -1,1 +1,85 @@
-Games: {{ games }}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="icon-flag"></i> Games</h3>
+        <div class="panel-heading-right">
+            <button class="btn-panel" type="button" data-ng-click="showForm = !showForm">
+                <span class="icon-plus"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="panel-form-container transition-all-03" data-ng-class="showForm ? 'slidedown' : 'slideup'">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="new-game-season">Home Player</label>
+                <select class="form-control" id="new-game-season" data-ng-model="newGameSeason" data-ng-options="season.name for season in seasons">
+                    <option value="">Season</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="new-game-homePlayer">Home Player</label>
+                <select class="form-control" id="new-game-homePlayer" data-ng-model="newGameHomePlayer" data-ng-options="player.name for player in players">
+                    <option value="">Home Player</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="new-game-awayPlayer">Away Player</label>
+                <select class="form-control" id="new-game-awayPlayer" data-ng-model="newGameAwayPlayer" data-ng-options="player.name for player in players">
+                    <option value="">Away Player</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="new-game-homeTeam">Home Team</label>
+                <select class="form-control" id="new-game-homeTeam" data-ng-model="newGameHomeTeam" data-ng-options="team.name for team in teams">
+                    <option value="">Home Team</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="new-game-awayTeam">Away Team</label>
+                <select class="form-control" id="new-game-awayTeam" data-ng-model="newGameAwayTeam" data-ng-options="team.name for team in teams">
+                    <option value="">Away Team</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="new-game-homePoints">Home Points</label>
+                <input type="text" class="form-control" id="new-game-homePoints" placeholder="Home Points" data-ng-model="newGameHomePoints">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="new-game-awayPoints">Away Points</label>
+                <input type="text" class="form-control" id="new-game-awayPoints" placeholder="Away Points" data-ng-model="newGameAwayPoints">
+            </div>
+            <button type="submit" class="btn btn-primary" data-ng-click="createNewGame()">Create</button>
+            <button type="button" class="btn btn-default" data-ng-click="showForm = !showForm">Cancel</button>
+        </form>
+    </div>
+
+    <div class="panel-table-wrapper">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Season</th>
+                <th>Home Player</th>
+                <th>Away Player</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Points</th>
+                <th class="min-width"></th>
+            </tr>
+            <tr data-ng-show="!games.length">
+                <td colspan="7">No games...</td>
+            </tr>
+            <tr data-ng-repeat="game in games">
+                <td>{{ game.id }}</td>
+                <td>{{ game.season.name }}</td>
+                <td>{{ game.homePlayer.name }}</td>
+                <td>{{ game.awayPlayer.name }}</td>
+                <td>{{ game.homeTeam.name }}</td>
+                <td>{{ game.awayTeam.name }}</td>
+                <td>{{ game.homePoints }} - {{ game.awayPoints }}</td>
+                <td class="min-width">
+                    <button type="button" class="btn-text-only" data-ng-click="deleteGame(game)"><i class="icon-close"></i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
