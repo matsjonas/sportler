@@ -26,7 +26,8 @@ public class TeamResource {
         JsonNode json = Controller.request().body().asJson();
 
         String name = json.get("name").textValue();
-        long ownerId = json.get("ownerId").longValue();
+        JsonNode ownerJson = json.get("owner");
+        long ownerId = ownerJson.get("id").longValue();
 
         Player owner = Player.findById(ownerId);
         Team team = new Team(name, owner);
