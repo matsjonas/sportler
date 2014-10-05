@@ -34,10 +34,22 @@ public class GameResource extends Controller {
     public static Result createGame(long seasonId) {
         JsonNode json = request().body().asJson();
 
-        long homePlayerId = json.get("homePlayerId").longValue();
-        long awayPlayerId = json.get("awayPlayerId").longValue();
-        long homeTeamId = json.get("homeTeamId").longValue();
-        long awayTeamId = json.get("awayTeamId").longValue();
+        long homePlayerId = 0;
+        long awayPlayerId = 0;
+        long homeTeamId = 0;
+        long awayTeamId = 0;
+        try {
+            homePlayerId = json.get("homePlayer").get("id").longValue();
+            awayPlayerId = json.get("awayPlayer").get("id").longValue();
+        } catch (Exception e) {
+            // ignored
+        }
+        try {
+            homeTeamId = json.get("homeTeam").get("id").longValue();
+            awayTeamId = json.get("awayTeam").get("id").longValue();
+        } catch (NullPointerException e) {
+            // ignored
+        }
         int homePoints = json.get("homePoints").intValue();
         int awayPoints = json.get("awayPoints").intValue();
 
