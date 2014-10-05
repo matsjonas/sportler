@@ -35,11 +35,15 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th class="min-width"></th>
             </tr>
             <tr data-ng-repeat="player in players">
                 <td>{{ player.id }}</td>
                 <td>{{ player.name }}</td>
                 <td>{{ player.email }}</td>
+                <td class="min-width">
+                    <button type="button" class="btn-text-only" data-ng-click="deletePlayer(player)"><i class="icon-close"></i></button>
+                </td>
             </tr>
         </table>
     </div>

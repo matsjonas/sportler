@@ -142,6 +142,15 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
             });
         };
 
+        $scope.deletePlayer = function(player) {
+            player.$remove(function() {
+                $scope.players = Player.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
+
     })
 
     .controller('TeamController', function ($scope, $location, $routeParams, $resource) {

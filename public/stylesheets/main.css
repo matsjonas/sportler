@@ -186,6 +186,29 @@ body {
     color: #333;
 }
 
+.btn-text-only {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: inherit;
+    color: #999;
+    outline: none;
+}
+
+.btn-text-only:hover {
+    color: #333;
+}
+
+.btn-panel i,
+.btn-text-only i {
+    vertical-align: middle;
+}
+
+td.min-width {
+    width: 1px;
+    white-space: nowrap;
+}
+
 .panel-table-wrapper {
     margin: 10px;
     font-size: 12px;
