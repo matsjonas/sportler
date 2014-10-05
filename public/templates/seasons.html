@@ -1,1 +1,51 @@
-Seasons: {{ seasons }}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="icon-layers"></i> Seasons</h3>
+        <div class="panel-heading-right">
+            <button class="btn-panel" type="button" data-ng-click="showForm = !showForm">
+                <span class="icon-plus"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="panel-form-container transition-all-03" data-ng-class="showForm ? 'slidedown' : 'slideup'">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="new-season-name">Season Name</label>
+                <input type="text" class="form-control" id="new-season-name" placeholder="Name" data-ng-model="newSeasonName">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="new-season-owner">Season Owner</label>
+                <select class="form-control" id="new-season-owner" data-ng-model="newSeasonOwner" data-ng-options="player.name for player in players">
+                    <option value="">Choose Owner</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" data-ng-click="createNewSeason()">Create</button>
+            <button type="button" class="btn btn-default" data-ng-click="showForm = !showForm">Cancel</button>
+        </form>
+    </div>
+
+    <div class="panel-table-wrapper">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Owner</th>
+                <th></th>
+                <th class="min-width"></th>
+            </tr>
+            <tr data-ng-show="!seasons.length">
+                <td colspan="4">No seasons...</td>
+            </tr>
+            <tr data-ng-repeat="season in seasons">
+                <td>{{ season.id }}</td>
+                <td>{{ season.name }}</td>
+                <td>{{ season.owner.name }}</td>
+                <td><span class="text-muted">{{ season.owner.email }}</span></td>
+                <td class="min-width">
+                    <button type="button" class="btn-text-only" data-ng-click="deleteSeason(season)"><i class="icon-close"></i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

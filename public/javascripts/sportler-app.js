@@ -188,11 +188,38 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     })
 
-    .controller('SeasonController', function ($scope, $location, $routeParams, $resource) {
+    .controller('SeasonController', function ($scope, $location, $routeParams, $resource, $window) {
 
+        var Player = $resource("./api/player/:id", { id: '@id' });
         var Season = $resource("./api/season/:id", { id: '@id' });
 
+        $scope.players = Player.query();
         $scope.seasons = Season.query();
+
+        $scope.createNewSeason = function() {
+            var season = new Season();
+            season.name = $scope.newSeasonName;
+            season.owner = $scope.newSeasonOwner;
+            season.$save(function() {
+                $scope.newSeasonName = null;
+                $scope.newSeasonOwner = null;
+                $scope.players = Player.query();
+                $scope.seasons = Season.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
+
+        $scope.deleteSeason = function(season) {
+            season.$remove(function() {
+                $scope.players = Player.query();
+                $scope.seasons = Season.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
 
     })
 
