@@ -37,6 +37,9 @@
                 <th>Email</th>
                 <th class="min-width"></th>
             </tr>
+            <tr data-ng-show="!players.length">
+                <td colspan="4">No players...</td>
+            </tr>
             <tr data-ng-repeat="player in players">
                 <td>{{ player.id }}</td>
                 <td>{{ player.name }}</td>
