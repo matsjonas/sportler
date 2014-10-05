@@ -153,11 +153,38 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     })
 
-    .controller('TeamController', function ($scope, $location, $routeParams, $resource) {
+    .controller('TeamController', function ($scope, $location, $routeParams, $resource, $window) {
 
+        var Player = $resource("./api/player/:id", { id: '@id' });
         var Team = $resource("./api/team/:id", { id: '@id' });
 
+        $scope.players = Player.query();
         $scope.teams = Team.query();
+
+        $scope.createNewTeam = function() {
+            var team = new Team();
+            team.name = $scope.newTeamName;
+            team.owner = $scope.newTeamOwner;
+            team.$save(function() {
+                $scope.newTeamName = null;
+                $scope.newTeamOwner = null;
+                $scope.players = Player.query();
+                $scope.teams = Team.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
+
+        $scope.deleteTeam = function(team) {
+            team.$remove(function() {
+                $scope.players = Player.query();
+                $scope.teams = Team.query();
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
 
     })
 
