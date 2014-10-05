@@ -5,6 +5,7 @@ import play.Logger;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -43,7 +44,7 @@ public class Season extends Model {
     @JsonIgnore
     public Date createdDate;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(name = "season_admins")
     @Constraints.Required
     @JsonIgnore
