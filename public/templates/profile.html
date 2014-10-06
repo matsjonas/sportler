@@ -1,1 +1,72 @@
-Profile: {{ player }}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="icon-user"></i> Profile</h3>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="profile-id" class="col-sm-2 control-label">Id</label>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="profile-id" data-ng-model="player.id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email" class="col-sm-2 control-label">Email</label>
+
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="profile-email" placeholder="Email" data-ng-model="player.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-name" class="col-sm-2 control-label">Name</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="profile-name" placeholder="Name" data-ng-model="player.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-7">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="icon-key"></i> Change Password</h3>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="profile-new-password" class="col-sm-4 control-label">New Password</label>
+
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" id="profile-new-password" data-ng-model="newPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-confirm-password" class="col-sm-4 control-label">Confirm</label>
+
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" id="profile-confirm-password" data-ng-model="newPasswordConfirm">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-7">
+                            <button type="submit" class="btn btn-primary">Change</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
