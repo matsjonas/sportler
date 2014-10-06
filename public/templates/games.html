@@ -57,7 +57,7 @@
 
         <table class="table">
             <tr>
-                <th>Id</th>
+                <th class="min-width">Id</th>
                 <th>Season</th>
                 <th>Home Player</th>
                 <th>Away Player</th>
@@ -70,7 +70,7 @@
                 <td colspan="7">No games...</td>
             </tr>
             <tr data-ng-repeat="game in games">
-                <td>{{ game.id }}</td>
+                <td class="min-width">{{ game.id }}</td>
                 <td>{{ game.season.name }}</td>
                 <td>{{ game.homePlayer.name }}</td>
                 <td>{{ game.awayPlayer.name }}</td>

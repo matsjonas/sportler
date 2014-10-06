@@ -29,7 +29,7 @@
 
         <table class="table">
             <tr>
-                <th>Id</th>
+                <th class="min-width">Id</th>
                 <th>Name</th>
                 <th>Owner</th>
                 <th></th>
@@ -39,7 +39,7 @@
                 <td colspan="4">No seasons...</td>
             </tr>
             <tr data-ng-repeat="season in seasons">
-                <td>{{ season.id }}</td>
+                <td class="min-width">{{ season.id }}</td>
                 <td>{{ season.name }}</td>
                 <td>{{ season.owner.name }}</td>
                 <td><span class="text-muted">{{ season.owner.email }}</span></td>
