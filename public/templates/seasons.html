@@ -1,6 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="icon-layers"></i> Seasons</h3>
+
         <div class="panel-heading-right">
             <button class="btn-panel" type="button" data-ng-click="showForm = !showForm">
                 <span class="icon-plus"></span>
@@ -8,24 +9,24 @@
         </div>
     </div>
 
-    <div class="panel-form-container transition-all-03" data-ng-class="showForm ? 'slidedown' : 'slideup'">
-        <form class="form-inline" role="form">
-            <div class="form-group">
-                <label class="sr-only" for="new-season-name">Season Name</label>
-                <input type="text" class="form-control" id="new-season-name" placeholder="Name" data-ng-model="newSeasonName">
-            </div>
-            <div class="form-group">
-                <label class="sr-only" for="new-season-owner">Season Owner</label>
-                <select class="form-control" id="new-season-owner" data-ng-model="newSeasonOwner" data-ng-options="player.name for player in players">
-                    <option value="">Choose Owner</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary" data-ng-click="createNewSeason()">Create</button>
-            <button type="button" class="btn btn-default" data-ng-click="showForm = !showForm">Cancel</button>
-        </form>
-    </div>
+    <div class="panel-body">
+        <div class="panel-form-container transition-all-03" data-ng-class="showForm ? 'slidedown' : 'slideup'">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="new-season-name">Season Name</label>
+                    <input type="text" class="form-control" id="new-season-name" placeholder="Name" data-ng-model="newSeasonName">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="new-season-owner">Season Owner</label>
+                    <select class="form-control" id="new-season-owner" data-ng-model="newSeasonOwner" data-ng-options="player.name for player in players">
+                        <option value="">Choose Owner</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" data-ng-click="createNewSeason()">Create</button>
+                <button type="button" class="btn btn-default" data-ng-click="showForm = !showForm">Cancel</button>
+            </form>
+        </div>
 
-    <div class="panel-table-wrapper">
         <table class="table">
             <tr>
                 <th>Id</th>

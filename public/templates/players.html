@@ -1,6 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="icon-users"></i> Players</h3>
+
         <div class="panel-heading-right">
             <button class="btn-panel" type="button" data-ng-click="showForm = !showForm">
                 <span class="icon-plus"></span>
@@ -8,28 +9,28 @@
         </div>
     </div>
 
-    <div class="panel-form-container transition-all-03" data-ng-class="showForm ? 'slidedown' : 'slideup'">
-        <form class="form-inline" role="form">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><label for="new-player-email">@</label></div>
-                    <input class="form-control" type="email" placeholder="email@example.com" id="new-player-email" data-ng-model="newPlayerEmail">
+    <div class="panel-body">
+        <div class="panel-form-container transition-all-03" data-ng-class="showForm ? 'slidedown' : 'slideup'">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><label for="new-player-email">@</label></div>
+                        <input class="form-control" type="email" placeholder="email@example.com" id="new-player-email" data-ng-model="newPlayerEmail">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="sr-only" for="new-player-name">Email address</label>
-                <input type="text" class="form-control" id="new-player-name" placeholder="Name" data-ng-model="newPlayerName">
-            </div>
-            <div class="form-group">
-                <label class="sr-only" for="new-player-password">Password</label>
-                <input type="password" class="form-control" id="new-player-password" placeholder="Password" data-ng-model="newPlayerPassword">
-            </div>
-            <button type="submit" class="btn btn-primary" data-ng-click="createNewPlayer()">Create</button>
-            <button type="button" class="btn btn-default" data-ng-click="showForm = !showForm">Cancel</button>
-        </form>
-    </div>
+                <div class="form-group">
+                    <label class="sr-only" for="new-player-name">Email address</label>
+                    <input type="text" class="form-control" id="new-player-name" placeholder="Name" data-ng-model="newPlayerName">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="new-player-password">Password</label>
+                    <input type="password" class="form-control" id="new-player-password" placeholder="Password" data-ng-model="newPlayerPassword">
+                </div>
+                <button type="submit" class="btn btn-primary" data-ng-click="createNewPlayer()">Create</button>
+                <button type="button" class="btn btn-default" data-ng-click="showForm = !showForm">Cancel</button>
+            </form>
+        </div>
 
-    <div class="panel-table-wrapper">
         <table class="table">
             <tr>
                 <th>Id</th>

@@ -209,22 +209,21 @@ td.min-width {
     white-space: nowrap;
 }
 
-.panel-table-wrapper {
-    margin: 10px;
+.panel-body table {
     font-size: 12px;
 }
 
-.panel-table-wrapper table {
-    margin: 0px;
+.panel-body table {
+    margin: 0;
 }
 
-.panel-table-wrapper table tr th {
+.panel-body table tr th {
     border-top: none;
     border-bottom: 2px solid #ddd;
 }
 
 .panel-form-container {
-    margin: 10px 10px;
+    margin-bottom: 10px;
 }
 
 .input-group-addon label {
