@@ -72,6 +72,35 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     })
 
+    .factory('RestfulResource', function ($resource) {
+        return function (url, params, methods) {
+            var defaults = {
+                update: { method: 'put', isArray: false },
+                create: { method: 'post' }
+            };
+
+            methods = angular.extend(defaults, methods);
+
+            var resource = $resource(url, params, methods);
+
+            resource.prototype.$save = function () {
+                if (!this.id) {
+                    // if the instance doesn't have an id,
+                    // call the create method that uses a
+                    // POST request
+                    return this.$create();
+                } else {
+                    // if the instance do have an id, call
+                    // the update method that uses a PUT
+                    // request
+                    return this.$update();
+                }
+            };
+
+            return resource;
+        };
+    })
+
     .controller('SidebarController', function($scope, $location, SharedSettings) {
 
         $scope.sharedSettings = SharedSettings.settings;
