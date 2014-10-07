@@ -8,13 +8,6 @@
             <div class="panel-body">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label for="profile-id" class="col-sm-2 control-label">Id</label>
-
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="profile-id" data-ng-model="player.id" data-ng-disabled="true">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="profile-email" class="col-sm-2 control-label">Email</label>
 
                         <div class="col-sm-9">
@@ -53,16 +46,17 @@
                             <input type="password" class="form-control" id="profile-new-password" data-ng-model="newPassword">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" data-ng-class="{'has-error has-feedback': !passwordValid()}">
                         <label for="profile-confirm-password" class="col-sm-4 control-label">Confirm</label>
 
                         <div class="col-sm-7">
-                            <input type="password" class="form-control" id="profile-confirm-password" data-ng-model="newPasswordConfirm">
+                            <input type="password" class="form-control" id="profile-confirm-password" data-ng-model="newPasswordConfirm" data-ng-disabled="!newPassword">
+                            <span class="glyphicon glyphicon-remove form-control-feedback" data-ng-show="!passwordValid()"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-7">
-                            <button type="submit" class="btn btn-primary">Change</button>
+                            <button type="submit" class="btn btn-primary" data-ng-click="changePassword()" data-ng-disabled="!newPassword || !passwordValid()">Change</button>
                         </div>
                     </div>
                 </form>

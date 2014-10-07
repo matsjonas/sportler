@@ -38,10 +38,17 @@ public class PlayerResource extends Controller {
 
         String email = json.get("email").textValue();
         String name = json.get("name").textValue();
+        String password = null;
+        if (json.has("password")) {
+            password = json.get("password").textValue();
+        }
 
         Player player = Player.findById(id);
         player.setEmail(email);
         player.name = name;
+        if (password != null) {
+            player.setPassword(password);
+        }
         player.update(id);
 
         return ok(Json.toJson(player));

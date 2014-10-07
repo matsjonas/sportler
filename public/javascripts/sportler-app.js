@@ -144,20 +144,39 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
     .controller('ProfileEditor', ['$scope', '$location', '$routeParams', 'RestfulResource', '$window',
         function ($scope, $location, $routeParams, $resource, $window) {
 
-        var Player = $resource("./api/player/:id", { id: '@id' });
+            var Player = $resource("./api/player/:id", { id: '@id' });
 
-        $scope.player = Player.get({ id: 1 });
-
-        $scope.updateProfile = function() {
-            $scope.player.$save(function() {
-                // ignored
-            }, function() {
-                $window.alert("Something went wrong! The page will be reloaded...");
-                $window.location.reload();
+            $scope.player = Player.get({ id: 1 }, function() {
+                $scope.originalPlayer = angular.copy($scope.player);
             });
-        };
+            $scope.passwdPlayer = Player.get({ id: 1 });
 
-    }])
+            $scope.updateProfile = function () {
+                $scope.player.$save(function () {
+                    $scope.passwdPlayer = Player.get({ id: 1 });
+                }, function () {
+                    $window.alert("Something went wrong! The page will be reloaded...");
+                    $window.location.reload();
+                });
+            };
+
+            $scope.changePassword = function () {
+                $scope.originalPlayer.password = $scope.newPassword;
+                $scope.originalPlayer.$save(function () {
+                    $scope.newPassword = null;
+                    $scope.newPasswordConfirm = null;
+                    $scope.originalPlayer = Player.get({ id: 1 });
+                }, function () {
+                    $window.alert("Something went wrong! The page will be reloaded...");
+                    $window.location.reload();
+                });
+            };
+
+            $scope.passwordValid = function() {
+                return $scope.newPassword == $scope.newPasswordConfirm;
+            };
+
+        }])
 
     .controller('PlayerController', function ($scope, $location, $routeParams, $resource, $window) {
 
