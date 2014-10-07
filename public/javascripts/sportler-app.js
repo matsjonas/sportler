@@ -141,13 +141,23 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
     })
 
-    .controller('ProfileEditor', function ($scope, $location, $routeParams, $resource) {
+    .controller('ProfileEditor', ['$scope', '$location', '$routeParams', 'RestfulResource', '$window',
+        function ($scope, $location, $routeParams, $resource, $window) {
 
         var Player = $resource("./api/player/:id", { id: '@id' });
 
         $scope.player = Player.get({ id: 1 });
 
-    })
+        $scope.updateProfile = function() {
+            $scope.player.$save(function() {
+                // ignored
+            }, function() {
+                $window.alert("Something went wrong! The page will be reloaded...");
+                $window.location.reload();
+            });
+        };
+
+    }])
 
     .controller('PlayerController', function ($scope, $location, $routeParams, $resource, $window) {
 
