@@ -32,23 +32,27 @@
         </div>
 
         <table class="table">
-            <tr>
-                <th class="min-width">Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th class="min-width"></th>
-            </tr>
-            <tr data-ng-show="!players.length">
-                <td colspan="4">No players...</td>
-            </tr>
-            <tr data-ng-repeat="player in players">
-                <td class="min-width">{{ player.id }}</td>
-                <td>{{ player.name }}</td>
-                <td>{{ player.email }}</td>
-                <td class="min-width">
-                    <button type="button" class="btn-text-only" data-ng-click="deletePlayer(player)"><i class="icon-close"></i></button>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th class="min-width">Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th class="min-width"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-show="!players.length">
+                    <td colspan="4">No players...</td>
+                </tr>
+                <tr data-ng-repeat="player in players">
+                    <td class="min-width">{{ player.id }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.email }}</td>
+                    <td class="min-width">
+                        <button type="button" class="btn-text-only" data-ng-click="deletePlayer(player)"><i class="icon-close"></i></button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

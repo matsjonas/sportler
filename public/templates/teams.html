@@ -27,25 +27,29 @@
         </div>
 
         <table class="table">
-            <tr>
-                <th class="min-width">Id</th>
-                <th>Name</th>
-                <th>Owner</th>
-                <th></th>
-                <th class="min-width"></th>
-            </tr>
-            <tr data-ng-show="!teams.length">
-                <td colspan="4">No teams...</td>
-            </tr>
-            <tr data-ng-repeat="team in teams">
-                <td class="min-width">{{ team.id }}</td>
-                <td>{{ team.name }}</td>
-                <td>{{ team.owner.name }}</td>
-                <td><span class="text-muted">{{ team.owner.email }}</span></td>
-                <td class="min-width">
-                    <button type="button" class="btn-text-only" data-ng-click="deleteTeam(team)"><i class="icon-close"></i></button>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th class="min-width">Id</th>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th></th>
+                    <th class="min-width"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-show="!teams.length">
+                    <td colspan="4">No teams...</td>
+                </tr>
+                <tr data-ng-repeat="team in teams">
+                    <td class="min-width">{{ team.id }}</td>
+                    <td>{{ team.name }}</td>
+                    <td>{{ team.owner.name }}</td>
+                    <td><span class="text-muted">{{ team.owner.email }}</span></td>
+                    <td class="min-width">
+                        <button type="button" class="btn-text-only" data-ng-click="deleteTeam(team)"><i class="icon-close"></i></button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

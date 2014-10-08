@@ -224,19 +224,6 @@ td.min-width {
     white-space: nowrap;
 }
 
-.panel-body table {
-    font-size: 12px;
-}
-
-.panel-body table {
-    margin: 0;
-}
-
-.panel-body table tr th {
-    border-top: none;
-    border-bottom: 2px solid #ddd;
-}
-
 .panel-form-container {
     margin-bottom: 10px;
 }

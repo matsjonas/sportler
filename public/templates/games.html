@@ -56,31 +56,35 @@
         </div>
 
         <table class="table">
-            <tr>
-                <th class="min-width">Id</th>
-                <th>Season</th>
-                <th>Home Player</th>
-                <th>Away Player</th>
-                <th>Home Team</th>
-                <th>Away Team</th>
-                <th>Points</th>
-                <th class="min-width"></th>
-            </tr>
-            <tr data-ng-show="!games.length">
-                <td colspan="7">No games...</td>
-            </tr>
-            <tr data-ng-repeat="game in games">
-                <td class="min-width">{{ game.id }}</td>
-                <td>{{ game.season.name }}</td>
-                <td>{{ game.homePlayer.name }}</td>
-                <td>{{ game.awayPlayer.name }}</td>
-                <td>{{ game.homeTeam.name }}</td>
-                <td>{{ game.awayTeam.name }}</td>
-                <td>{{ game.homePoints }} - {{ game.awayPoints }}</td>
-                <td class="min-width">
-                    <button type="button" class="btn-text-only" data-ng-click="deleteGame(game)"><i class="icon-close"></i></button>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th class="min-width">Id</th>
+                    <th>Season</th>
+                    <th>Home Player</th>
+                    <th>Away Player</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Points</th>
+                    <th class="min-width"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-show="!games.length">
+                    <td colspan="8">No games...</td>
+                </tr>
+                <tr data-ng-repeat="game in games">
+                    <td class="min-width">{{ game.id }}</td>
+                    <td>{{ game.season.name }}</td>
+                    <td>{{ game.homePlayer.name }}</td>
+                    <td>{{ game.awayPlayer.name }}</td>
+                    <td>{{ game.homeTeam.name }}</td>
+                    <td>{{ game.awayTeam.name }}</td>
+                    <td>{{ game.homePoints }} - {{ game.awayPoints }}</td>
+                    <td class="min-width">
+                        <button type="button" class="btn-text-only" data-ng-click="deleteGame(game)"><i class="icon-close"></i></button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

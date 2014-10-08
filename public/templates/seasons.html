@@ -28,25 +28,29 @@
         </div>
 
         <table class="table">
-            <tr>
-                <th class="min-width">Id</th>
-                <th>Name</th>
-                <th>Owner</th>
-                <th></th>
-                <th class="min-width"></th>
-            </tr>
-            <tr data-ng-show="!seasons.length">
-                <td colspan="4">No seasons...</td>
-            </tr>
-            <tr data-ng-repeat="season in seasons">
-                <td class="min-width">{{ season.id }}</td>
-                <td>{{ season.name }}</td>
-                <td>{{ season.owner.name }}</td>
-                <td><span class="text-muted">{{ season.owner.email }}</span></td>
-                <td class="min-width">
-                    <button type="button" class="btn-text-only" data-ng-click="deleteSeason(season)"><i class="icon-close"></i></button>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th class="min-width">Id</th>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th></th>
+                    <th class="min-width"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-show="!seasons.length">
+                    <td colspan="4">No seasons...</td>
+                </tr>
+                <tr data-ng-repeat="season in seasons">
+                    <td class="min-width">{{ season.id }}</td>
+                    <td>{{ season.name }}</td>
+                    <td>{{ season.owner.name }}</td>
+                    <td><span class="text-muted">{{ season.owner.email }}</span></td>
+                    <td class="min-width">
+                        <button type="button" class="btn-text-only" data-ng-click="deleteSeason(season)"><i class="icon-close"></i></button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
