@@ -176,6 +176,15 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
                 return $scope.newPassword == $scope.newPasswordConfirm;
             };
 
+            $scope.gravatarUrl = function(email, size) {
+                if (email) {
+                    var s = size || 50;
+                    return "http://www.gravatar.com/avatar/" + md5(email) + "?d=mm&s=" + s
+                } else {
+                    return null;
+                }
+            };
+
         }])
 
     .controller('PlayerController', function ($scope, $location, $routeParams, $resource, $window) {
