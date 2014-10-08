@@ -48,6 +48,16 @@ body {
     border-radius: 25px;
 }
 
+.player-avatar-big {
+    height: 80px;
+    width: 80px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+    border-radius: 40px;
+}
+
 .sidebar .player-info .player-avatar {
     float: left;
 }
