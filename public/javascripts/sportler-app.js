@@ -101,7 +101,7 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
         };
     })
 
-    .controller('SidebarController', function($scope, $location, SharedSettings) {
+    .controller('SidebarController', function($scope, $location, SharedSettings, $window) {
 
         $scope.sharedSettings = SharedSettings.settings;
 
@@ -111,6 +111,12 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
         $scope.activeIf = function(path) {
             return $location.path() == path ? "active" : false;
+        };
+
+        $scope.menuClick = function() {
+            if ($window.innerWidth <= 768) {
+                SharedSettings.toggleSidebarVisible();
+            }
         };
     })
 

@@ -101,25 +101,32 @@ body {
     margin-right: 20px;
 }
 
+.container-fluid {
+    padding-left: 0;
+}
+
 .navbar {
     z-index: 11;
     background-color: #fff;
     border-bottom: 1px solid #d1d1d1;
 }
 
-.navbar .navbar-header {
-    position: absolute;
-    left: 15px;
-    border-right: 1px solid #d1d1d1;
-    width: 235px;
+.navbar .navbar-header.header-hidden {
+    left: -200px;
 }
 
-.navbar .navbar-header.header-hidden {
-    left: -185px;
+.navbar .navbar-header {
+    position: absolute;
+    border-right: 1px solid #d1d1d1;
+    width: 250px;
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
 }
 
 .navbar .navbar-header .navbar-brand {
     color: #222;
+    margin-left: 0;
 }
 
 .navbar .navbar-header .navbar-brand i {
@@ -164,6 +171,12 @@ body {
     background-color: #e7e7e7;
     margin: 51px 0 30px 250px;
     padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
 }
 
 .main-content.full-size {
