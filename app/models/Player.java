@@ -7,12 +7,12 @@ import play.db.ebean.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class Player extends Model {
@@ -42,9 +42,9 @@ public class Player extends Model {
     @JsonIgnore
     public Date createdDate;
 
-    @Column(length = 36)
+    @OneToMany(mappedBy = "player")
     @JsonIgnore
-    private String authToken;
+    public List<AuthToken> authTokens;
 
     /*
         Custom access methods
@@ -66,15 +66,18 @@ public class Player extends Model {
         this.password = getSha512(password);
     }
 
-    public String createToken() {
-        authToken = UUID.randomUUID().toString();
-        save();
-        return authToken;
+    public String createAuthToken() {
+        AuthToken token = new AuthToken(this);
+        token.save();
+        return token.token;
     }
 
-    public void deleteAuthToken() {
-        authToken = null;
-        save();
+    public void revokeAuthToken(String token) {
+        AuthToken.revokeToken(token);
+    }
+
+    public void revokeAllAuthTokens() {
+        AuthToken.revokeAllTokens(this);
     }
 
     /*
@@ -104,7 +107,7 @@ public class Player extends Model {
         }
 
         return FINDER.where()
-                .eq("authToken", authToken)
+                .contains("authTokens.token", authToken)
                 .findUnique();
     }
 
