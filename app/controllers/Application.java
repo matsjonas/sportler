@@ -1,9 +1,11 @@
 package controllers;
 
-import play.mvc.*;
+import filters.LoginRequired;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
-import views.html.*;
-
+@LoginRequired
 public class Application extends Controller {
 
     public static Result index() {
