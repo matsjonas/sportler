@@ -117,7 +117,7 @@ public class Player extends Model {
         }
 
         return FINDER.where()
-                .eq("emailAddress", emailAddress.toLowerCase())
+                .eq("email", emailAddress.toLowerCase())
                 .eq("password", getSha512(password))
                 .findUnique();
     }
