@@ -27,6 +27,10 @@ public class Login extends Controller {
         }
     }
 
+    public static Result register() {
+        return Results.TODO;
+    }
+
     public static Result logout() {
         session().clear();
         return Results.ok(logout.render());

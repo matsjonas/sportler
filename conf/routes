@@ -2,9 +2,10 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Login screen
+# Public screens
 GET           /login                           controllers.Login.login()
 POST          /login                           controllers.Login.authenticate()
+GET           /register                        controllers.Login.register()
 GET           /logout                          controllers.Login.logout()
 
 # Home page
