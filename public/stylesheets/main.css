@@ -115,11 +115,11 @@ body {
     border-bottom: 1px solid #d1d1d1;
 }
 
-.navbar .navbar-header.header-hidden {
+.navbar .hamburger-header.header-hidden {
     left: -200px;
 }
 
-.navbar .navbar-header {
+.navbar .hamburger-header {
     position: absolute;
     border-right: 1px solid #d1d1d1;
     width: 250px;

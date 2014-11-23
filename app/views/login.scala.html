@@ -5,7 +5,17 @@
     <div class="navbar navbar-default navbar-fixed-top navbar-login">
         <div class="container-fluid">
 
+            <div class="navbar-header">
+                <span class="navbar-brand">
+                    <i class="icon-trophy"></i>
+                    <span class="brand-title">Sportler</span>
+                </span>
+            </div>
+
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <p class="navbar-text">Login:</p>
+                </li>
                 <li>
                     <form class="form-inline" action="@routes.Login.authenticate()" method="post">
                         <div class="form-group">
@@ -17,12 +27,12 @@
                                 <label class="sr-only" for="password">Password</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="password">
                             </div>
-                            <button type="submit" class="btn btn-success">Login <i class="icon-login"></i></button>
+                            <button type="submit" class="btn btn-success">Go! <i class="icon-login"></i></button>
                         </div>
                     </form>
                 </li>
                 <li>
-                    <a href="/register">Not a member?</a>
+                    <p class="navbar-text">Not a member? <a href="/register" class="navbar-link">Join!</a></p>
                 </li>
             </ul>
 
