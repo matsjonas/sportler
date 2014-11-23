@@ -122,6 +122,11 @@ public class Player extends Model {
                 .findUnique();
     }
 
+    public static boolean isEmailUnique(String email) {
+        Player player = FINDER.where().eq("email", email.toLowerCase()).findUnique();
+        return player == null;
+    }
+
     /*
         Utility methods
      */

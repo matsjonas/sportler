@@ -1,4 +1,4 @@
-@()
+@(player: Player)
 
 @import tags.gravatar
 
@@ -6,9 +6,9 @@
 
     <nav class="sidebar transition-all-03" role="navigation" data-ng-class="{'sidebar-hidden' : !sharedSettings.sidebarVisible}" data-ng-controller="SidebarController">
         <div class="player-info">
-            <img class="player-avatar" src="@gravatar("me@matsjonas.com")" alt="gravatar"/>
-            <div class="player-name">matsjonas</div>
-            <div class="player-email">me@@matsjonas.com</div>
+            <img class="player-avatar" src="@gravatar(player.getEmail)" alt="gravatar"/>
+            <div class="player-name">@player.name</div>
+            <div class="player-email">@player.getEmail</div>
         </div>
         <ul class="sidebar-menu">
             <li data-ng-class="activeIf('/dashboard')">
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="main-content transition-all-03" data-ng-class="{'full-size' : !sharedSettings.sidebarVisible}" data-ng-controller="MainContentController">
+    <div class="main-content transition-all-03" data-ng-class="{'full-size' : !sharedSettings.sidebarVisible}" data-ng-controller="MainContentController" data-ng-init="init(@player.id)">
         <div data-ng-view></div>
     </div>
 

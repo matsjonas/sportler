@@ -6,6 +6,7 @@
 GET           /login                           controllers.Login.login()
 POST          /login                           controllers.Login.authenticate()
 GET           /register                        controllers.Login.register()
+POST          /register                        controllers.Login.registerNewUser()
 GET           /logout                          controllers.Login.logout()
 
 # Home page

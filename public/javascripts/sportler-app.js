@@ -65,6 +65,8 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
             sidebarVisible: !$cookies.sidebarVisible || $cookies.sidebarVisible == 'true'
         };
 
+        this.currentUserId = -1;
+
         this.toggleSidebarVisible = function() {
             this.settings.sidebarVisible = !this.settings.sidebarVisible;
             $cookies.sidebarVisible = this.settings.sidebarVisible;
@@ -137,6 +139,10 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
         $scope.sharedSettings = SharedSettings.settings;
 
+        $scope.init = function(playerId) {
+            $scope.sharedSettings.currentUserId = playerId;
+        };
+
         $scope.state = {
 
         };
@@ -152,14 +158,14 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
 
             var Player = $resource("./api/player/:id", { id: '@id' });
 
-            $scope.player = Player.get({ id: 1 }, function() {
+            $scope.player = Player.get({ id: $scope.sharedSettings.currentUserId }, function() {
                 $scope.originalPlayer = angular.copy($scope.player);
             });
-            $scope.passwdPlayer = Player.get({ id: 1 });
+            $scope.passwdPlayer = Player.get({ id: $scope.sharedSettings.currentUserId });
 
             $scope.updateProfile = function () {
                 $scope.player.$save(function () {
-                    $scope.passwdPlayer = Player.get({ id: 1 });
+                    $scope.passwdPlayer = Player.get({ id: $scope.sharedSettings.currentUserId });
                 }, function () {
                     $window.alert("Something went wrong! The page will be reloaded...");
                     $window.location.reload();
@@ -171,7 +177,7 @@ angular.module('sportlerApp', ['ngRoute', 'ngCookies', 'ngResource'])
                 $scope.originalPlayer.$save(function () {
                     $scope.newPassword = null;
                     $scope.newPasswordConfirm = null;
-                    $scope.originalPlayer = Player.get({ id: 1 });
+                    $scope.originalPlayer = Player.get({ id: $scope.sharedSettings.currentUserId });
                 }, function () {
                     $window.alert("Something went wrong! The page will be reloaded...");
                     $window.location.reload();

@@ -1,6 +1,7 @@
 package controllers;
 
 import filters.LoginRequired;
+import models.Player;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
@@ -9,7 +10,8 @@ import views.html.index;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render());
+        Player player = Player.findByAuthToken(session().get("_t"));
+        return ok(index.render(player));
     }
 
 }
