@@ -20,7 +20,7 @@ public class LoginRequiredFilter extends Action.Simple {
                 return delegate.call(ctx);
             }
         }
-        Result redirect = Results.redirect(routes.Login.login());
+        Result redirect = Results.redirect(routes.Public.welcome());
         return F.Promise.pure(redirect);
     }
 

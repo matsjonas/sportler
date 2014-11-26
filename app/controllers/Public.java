@@ -5,22 +5,22 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
-import views.html.login;
 import views.html.logout;
-import views.html.register;
+import views.html.registration;
+import views.html.welcome;
 
 import static play.data.Form.form;
 
-public class Login extends Controller {
+public class Public extends Controller {
 
-    public static Result login() {
-        return Results.ok(login.render(form(LoginCredentials.class)));
+    public static Result welcome() {
+        return Results.ok(welcome.render(form(LoginInfo.class)));
     }
 
-    public static Result authenticate() {
-        Form<LoginCredentials> loginForm = form(LoginCredentials.class).bindFromRequest();
+    public static Result login() {
+        Form<LoginInfo> loginForm = form(LoginInfo.class).bindFromRequest();
         if (loginForm.hasErrors()) {
-            return badRequest(login.render(loginForm));
+            return badRequest(welcome.render(loginForm));
         } else {
             session().clear();
             session("_t", loginForm.get().player.createAuthToken());
@@ -28,14 +28,14 @@ public class Login extends Controller {
         }
     }
 
-    public static Result register() {
-        return Results.ok(register.render(form(RegistrationForm.class)));
+    public static Result registration() {
+        return Results.ok(registration.render(form(RegistrationInfo.class)));
     }
 
-    public static Result registerNewUser() {
-        Form<RegistrationForm> form = form(RegistrationForm.class).bindFromRequest();
+    public static Result register() {
+        Form<RegistrationInfo> form = form(RegistrationInfo.class).bindFromRequest();
         if (form.hasErrors()) {
-            return badRequest(register.render(form));
+            return badRequest(registration.render(form));
         } else {
             Player player = new Player(form.get().email, form.get().name, form.get().password);
             player.save();
@@ -50,21 +50,21 @@ public class Login extends Controller {
         return Results.ok(logout.render());
     }
 
-    public static class LoginCredentials {
+    public static class LoginInfo {
 
-        public String username;
+        public String email;
         public String password;
 
         private Player player;
 
         public String validate() {
-            player = Player.findByEmailAndPassword(username, password);
-            return player == null ? "Invalid username or password" : null;
+            player = Player.findByEmailAndPassword(email, password);
+            return player == null ? "Invalid email or password" : null;
         }
 
     }
 
-    public static class RegistrationForm {
+    public static class RegistrationInfo {
 
         public String email;
         public String name;

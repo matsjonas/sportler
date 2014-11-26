@@ -1,4 +1,4 @@
-@(registrationForm: Form[Login.RegistrationForm])
+@(registrationForm: Form[Public.RegistrationInfo])
 
 @main("Sportler") {
 
@@ -14,7 +14,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <p class="navbar-text">Not ready to join? <a href="/login" class="navbar-link">Take me back!</a></p>
+                    <p class="navbar-text">Not ready to join? <a href="@routes.Public.welcome()" class="navbar-link">Take me back!</a></p>
                 </li>
             </ul>
 
@@ -35,7 +35,7 @@
 
         <h2>The form:</h2>
 
-        <form class="form-horizontal" action="@routes.Login.registerNewUser()" method="post">
+        <form class="form-horizontal" action="@routes.Public.register()" method="post">
             <div class="form-group">
                 <label for="email" class="col-sm-4 control-label">Email address</label>
                 <div class="col-sm-8">

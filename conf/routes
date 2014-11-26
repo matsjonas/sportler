@@ -3,11 +3,11 @@
 # ~~~~
 
 # Public screens
-GET           /login                           controllers.Login.login()
-POST          /login                           controllers.Login.authenticate()
-GET           /register                        controllers.Login.register()
-POST          /register                        controllers.Login.registerNewUser()
-GET           /logout                          controllers.Login.logout()
+GET           /welcome                         controllers.Public.welcome()
+POST          /login                           controllers.Public.login()
+GET           /register                        controllers.Public.registration()
+POST          /register                        controllers.Public.register()
+GET           /logout                          controllers.Public.logout()
 
 # Home page
 GET           /                                controllers.Application.index()
